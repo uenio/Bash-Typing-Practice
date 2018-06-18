@@ -6,13 +6,14 @@ correctChars=0
 maxWordLength=5
 maxSentenceLength=6
 
+RANDOM=$$
 bold=$(tput bold)
 normal=$(tput sgr0)
 
 main () {
-	#a=$(get_random_sentence)
+	a=$(get_random_sentence)
 	#a=$(get_random_word)
-	a=$(get_random_character)
+	#a=$(get_random_character)
 	echo $a
 	#print_results
 }

@@ -10,11 +10,11 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 main () {
-	a=$(print_random_sentence)
-	#a=$(print_random_word)
+	#a=$(get_random_sentence)
+	#a=$(get_random_word)
+	a=$(get_random_character)
 	echo $a
-	print_results
-
+	#print_results
 }
 
 print_random_letters () {
@@ -38,29 +38,44 @@ print_random_letters () {
 	done
 }
 
-print_random_sentence () {
+rand_int_in_range () {
+	local min=$1
+	local max=$2
+	return $(( ( RANDOM % max )  + min ))
+}
+
+get_random_sentence () {
+	rand_int_in_range 1 $maxSentenceLength
+	local length=$?
+
 	randomSentence=""
-	for ((i=1;i<=maxSentenceLength;i++))
+	for ((i=1;i<=length;i++))
 	do
-                nextWord=$(print_random_word)
+                nextWord=$(get_random_word)
                 randomSentence+=$nextWord
 		randomSentence+=" "
         done
         echo $randomSentence
 }
 
-print_random_word () {
+get_random_word () {
+	rand_int_in_range 1 $maxWordLength
+	local length=$?
+
 	randomWord=""
-	for ((i=1;i<=maxWordLength;i++))
+	for ((i=1;i<=length;i++))
         do
-		nextChar=$(print_random_character)
+		nextChar=$(get_random_character)
 		randomWord+=$nextChar
         done
 	echo $randomWord
 }
 
-print_random_character () {
-	randomLetter=${letterArray[$RANDOM % ${#letterArray[@]}]}
+get_random_character () {
+	rand_int_in_range 0 ${#letterArray[@]}
+	randIndex=$?
+
+	randomLetter=${letterArray[$randIndex]}
 	echo $randomLetter
 }
 

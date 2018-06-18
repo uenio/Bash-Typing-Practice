@@ -1,8 +1,14 @@
 #!/bin/bash
 
 letterArray=(f g h j)
+<<<<<<< HEAD
 totalChars=0
 correctChars=0
+=======
+total=0
+numCorrect=0
+
+>>>>>>> c02f1860b6909d926cad7acf865840d3c2c00eb2
 
 bold=$(tput bold)
 normal=$(tput sgr0)
@@ -19,6 +25,7 @@ do
 	if [ "$randomLetter" == "$inputLetter" ]
 	then
 		printf "Correct!\n"
+<<<<<<< HEAD
 		(( correctChars++ ))
 	fi
 
@@ -32,3 +39,15 @@ print_results () {
 }
 
 print_results
+=======
+		(( numCorrect++ ))
+	fi
+
+	printf "$inputLetter\n"
+	(( total++ ))
+done
+
+
+echo $numCorrect
+echo $total
+>>>>>>> c02f1860b6909d926cad7acf865840d3c2c00eb2

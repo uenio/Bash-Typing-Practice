@@ -4,12 +4,14 @@ letterArray=(f g h j)
 totalChars=0
 correctChars=0
 maxWordLength=5
+maxSentenceLength=6
 
 bold=$(tput bold)
 normal=$(tput sgr0)
 
 main () {
-	a=$(print_random_word)
+	a=$(print_random_sentence)
+	#a=$(print_random_word)
 	echo $a
 	print_results
 
@@ -37,7 +39,14 @@ print_random_letters () {
 }
 
 print_random_sentence () {
-	echo "hi"
+	randomSentence=""
+	for ((i=1;i<=maxSentenceLength;i++))
+	do
+                nextWord=$(print_random_word)
+                randomSentence+=$nextWord
+		randomSentence+=" "
+        done
+        echo $randomSentence
 }
 
 print_random_word () {

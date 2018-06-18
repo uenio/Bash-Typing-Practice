@@ -1,0 +1,19 @@
+log
+CRan: 14558
+RINT: 4
+CRan: 31912
+RINT: 0
+GChar: f
+GWord: f
+CRan: 31912
+RINT: 0
+GChar: f
+GWord: ff
+CRan: 31912
+RINT: 0
+GChar: f
+GWord: fff
+CRan: 31912
+RINT: 0
+GChar: f
+GWord: ffff

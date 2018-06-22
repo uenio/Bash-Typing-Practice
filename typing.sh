@@ -1,24 +1,40 @@
 #!/bin/bash
 
-letterArray=(f g h j)
 totalChars=0
 correctChars=0
 maxWordLength=5
 maxSentenceLength=6
 
-RANDOM=$$
+letterArray=()
+
 bold=$(tput bold)
 normal=$(tput sgr0)
 
 main () {
-        a=$(get_random_sentence)
-        #a=$(get_random_word)
-        #a=$(get_random_character)
-        echo $a
-        #echo $randomWord
-        #print_results
-        #test
-        #get_random_word
+  load_letter_array
+  print_whole_array $letterArray
+
+
+  #a=$(get_random_sentence)
+  #echo $a
+}
+
+load_letter_array () {
+  while read -r line
+  do
+    for ((i=0;i<${#line};i++))
+    do
+      letterArray+=${line:$i:1}
+    done
+  done < "plans/left-hand-typing.txt"
+}
+
+print_whole_array () {
+  #$printedArray=$1
+  for each in "${letterArray[@]}"
+  do
+    echo "$each"
+  done
 }
 
 print_random_letters () {

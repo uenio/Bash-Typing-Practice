@@ -1,0 +1,5 @@
+typing, version NOT EVEN BETA
+
+usage: ./typing.sh [-h]
+
+  h : prints out help

@@ -1,5 +1,7 @@
 #!/bin/bash
+PATH_TO_LEFT_HAND_PLANS="plans/left-hand-typing.txt"
 
+level=20
 totalChars=0
 correctChars=0
 maxWordLength=5
@@ -20,13 +22,16 @@ main () {
 }
 
 load_letter_array () {
-  while read -r line
+  local counter=$level
+  while read -r line && (( counter>0 ))
   do
+    ((counter--))
+    echo $counter    
     for ((i=0;i<${#line};i++))
     do
       letterArray+=${line:$i:1}
     done
-  done < "plans/left-hand-typing.txt"
+  done < $PATH_TO_LEFT_HAND_PLANS
 }
 
 print_whole_array () {

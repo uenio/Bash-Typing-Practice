@@ -15,18 +15,17 @@ normal=$(tput sgr0)
 main () {
   load_letter_array
   print_whole_array $letterArray
-
-
-  #a=$(get_random_sentence)
-  #echo $a
+  echo "Starting typing now..."
+  read  -n 1 -p "Keyboard Input : " inputLetter
+  a=$(get_random_sentence)
+  prompt_and_check $a
 }
 
 load_letter_array () {
   local counter=$level
   while read -r line && (( counter>0 ))
   do
-    ((counter--))
-    echo $counter    
+    ((counter--))    
     for ((i=0;i<${#line};i++))
     do
       letterArray+=${line:$i:1}
@@ -61,6 +60,22 @@ print_random_letters () {
 		printf "$inputLetter\n"
 		(( totalChars++ ))
 	done
+}
+
+prompt_and_check () {
+  currentPos=0
+  currenPhrase=$0
+  echo $1
+
+  while [ $currentPos<${#currentPhrase} ] 
+  do
+    read  -n 1 -p "Keyboard Input : " inputLetter
+    if [ "$inputLetter" != "$currentPhrase[$currentPos]" ]
+    then 
+      echo "Incorrect!"
+    fi
+    (( currentPos++ ))
+  done
 }
 
 rand_int_in_range () {
